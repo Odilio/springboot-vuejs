@@ -13,7 +13,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import com.crm.model.Todo;
+//import com.crm.model.Todo;
 import com.crm.repository.TodoRepository;
 
 @SpringBootApplication
@@ -23,18 +23,15 @@ public class CrmApplication {
 		SpringApplication.run(CrmApplication.class, args);
 	}
 
-	 // Bootstrap some test data into the in-memory database
-    @Bean  
-    ApplicationRunner init(TodoRepository repository) {  
-        return args -> {  
-            Stream.of("Buy milk", "Eat pizza", "Write tutorial", "Study Vue.js", "Go kayaking").forEach(name -> {  
-                    Todo todo = new Todo();  
-                    todo.setTitle(name);  
-                    repository.save(todo);  
-            });  
-            repository.findAll().forEach(System.out::println);  
-        };  
-    }  
+	/*
+	 * // Bootstrap some test data into the in-memory database
+	 * 
+	 * @Bean ApplicationRunner init(TodoRepository repository) { return args -> {
+	 * Stream.of("Buy milk", "Eat pizza", "Write tutorial", "Study Vue.js",
+	 * "Go kayaking").forEach(name -> { Todo todo = new Todo(); todo.setTitle(name);
+	 * repository.save(todo); }); repository.findAll().forEach(System.out::println);
+	 * }; }
+	 */  
 
     // Fix the CORS errors
     @Bean
