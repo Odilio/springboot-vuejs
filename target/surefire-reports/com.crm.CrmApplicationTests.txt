@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.crm.CrmApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.15 s - in com.crm.CrmApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 36.174 s - in com.crm.CrmApplicationTests

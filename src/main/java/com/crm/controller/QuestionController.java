@@ -18,7 +18,10 @@ import com.crm.exception.ResourceNotFoundException;
 import com.crm.model.Question;
 import com.crm.repository.QuestionRepository;
 
+import io.swagger.annotations.Api;
+
 @RestController
+@Api(value = "Question")
 public class QuestionController {
 
     @Autowired
