@@ -1,10 +1,7 @@
 com\crm\repository\QuestionRepository.class
-com\crm\repository\TodoRepository.class
 com\crm\controller\QuestionController.class
 com\crm\config\SwaggerConfig.class
-com\crm\model\Todo.class
 com\crm\model\User.class
 com\crm\model\Question.class
 com\crm\exception\ResourceNotFoundException.class
-com\crm\repository\RestRepositoryConfigurator.class
 com\crm\CrmApplication.class
