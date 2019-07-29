@@ -21,15 +21,15 @@ import com.crm.repository.QuestionRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-	@RestController
-	@Api(value = "Question")
-	public class QuestionController {
+@Api(value = "Question")
+@RestController
+public class QuestionController {
 
     @Autowired
     private QuestionRepository questionRepository;
 
-    @GetMapping("/questions")
     @ApiOperation(value = "Mostra lista de questões")
+    @GetMapping("/questions")
     public Page<Question> getQuestions(Pageable pageable) {
         return questionRepository.findAll(pageable);
     }
