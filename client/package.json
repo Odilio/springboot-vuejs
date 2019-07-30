@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
-    "vuejs-logger": "^1.5.3"
+    "vue-axios": "^2.1.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",

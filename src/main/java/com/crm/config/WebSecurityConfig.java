@@ -89,7 +89,7 @@ httpSecurity.csrf().disable()
 
 // dont authenticate this particular request
 
-.authorizeRequests().antMatchers("/authenticate","/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**", "/swagger-ui.html", "/webjars/**").permitAll().
+.authorizeRequests().antMatchers("/questions", "/authenticate","/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**", "/swagger-ui.html", "/webjars/**").permitAll().
 
 // all other requests need to be authenticated
 

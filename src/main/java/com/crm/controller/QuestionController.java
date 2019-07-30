@@ -1,5 +1,7 @@
 package com.crm.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +30,20 @@ public class QuestionController {
     @Autowired
     private QuestionRepository questionRepository;
 
+	/*
+	 * @ApiOperation(value = "Mostra lista de questões")
+	 * 
+	 * @GetMapping("/questions") public Page<Question> getQuestions(Pageable
+	 * pageable) { return questionRepository.findAll(pageable); }
+	 */
+
     @ApiOperation(value = "Mostra lista de questões")
     @GetMapping("/questions")
-    public Page<Question> getQuestions(Pageable pageable) {
-        return questionRepository.findAll(pageable);
+    public List<Question> getQuestions() {
+        return questionRepository.findAll();
     }
 
-
+    
     @PostMapping("/questions")
     public Question createQuestion(@Valid @RequestBody Question question) {
         return questionRepository.save(question);
