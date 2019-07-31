@@ -36,11 +36,18 @@
                         {{token}}
                         </pre>
                     </div>
+                   <div class="card-body">
+
+                        <form @submit="inicial">    
+                        <button class="btn btn-success">Submit</button>
+                        </form>
+                    </div> 
                     <ul >
                         <li v-for="user in users"  :key="user.id">
                         {{user}}
                         </li>
-                    </ul>    
+                    </ul>   
+                    
                 </div>
             </div>
         </div>
@@ -94,6 +101,18 @@
                     username: this.username,
                     password: this.password
                 })
+                .then(function (response) {
+                    currentObj.token = response.data;
+                })
+                .catch(function (error) {
+                    currentObj.token = error;
+                });
+            }
+            inicial(e) {
+                
+                e.preventDefault();
+                let currentObj = this;
+                this.$router.push('/InitialPage')
                 .then(function (response) {
                     currentObj.token = response.data;
                 })

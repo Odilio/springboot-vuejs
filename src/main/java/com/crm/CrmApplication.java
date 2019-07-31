@@ -19,8 +19,6 @@ public class CrmApplication {
 		SpringApplication.run(CrmApplication.class, args);
 	}
 
-
-
     // Fix the CORS errors
     @Bean
     public FilterRegistrationBean simpleCorsFilter() {  
