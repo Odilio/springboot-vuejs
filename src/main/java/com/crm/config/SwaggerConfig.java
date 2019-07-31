@@ -29,6 +29,7 @@ return new ApiInfoBuilder()
 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
 .build();
 }
+
 @Override
 protected void addResourceHandlers(ResourceHandlerRegistry registry) {
 registry.addResourceHandler("swagger-ui.html")
