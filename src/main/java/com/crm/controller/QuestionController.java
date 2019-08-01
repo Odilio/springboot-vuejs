@@ -5,8 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +35,10 @@ public class QuestionController {
         return questionRepository.findAll();
     }
 
+    @GetMapping(path = "/questions/sorted")
+	List<Question> loadCharactersSorted(Sort sort) {
+		return questionRepository.findAllSorted(sort);
+	}    
 
     @PostMapping("/questions")
     public Question createQuestion(@Valid @RequestBody Question question) {
