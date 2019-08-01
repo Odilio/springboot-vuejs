@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.crm.model.Question;
 
+@Repository
 public interface QuestionRepository extends CrudRepository<Question, Long> {
 	
 	@Query("select c from Question c")
