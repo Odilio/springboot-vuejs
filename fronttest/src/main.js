@@ -1,6 +1,3 @@
-/**
- * Created by gubaoer on 17/4/18.
- */
 
 import Vue from 'vue'
 import {

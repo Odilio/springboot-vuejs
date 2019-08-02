@@ -8,46 +8,41 @@
             <el-table-column
                     fixed
                     prop="id"
-                    label="item_id"
+                    label="Id"
                     width="100">
             </el-table-column>
             <el-table-column
                     prop="username"
-                    label="username"
+                    label="Username"
                     width="120">
             </el-table-column>
             <el-table-column
                     prop="email"
-                    label="email"
+                    label="Email"
                     width="120">
             </el-table-column>
             <el-table-column
-                    prop="phone"
-                    label="phone"
+                    prop="mobile_phone"
+                    label="Celular"
                     width="130">
             </el-table-column>
             <el-table-column
                     prop="sex"
-                    label="sex"
-                    width="100">
-            </el-table-column>
-            <el-table-column
-                    prop="zone"
-                    label="zone"
+                    label="Sexo"
                     width="100">
             </el-table-column>
             <el-table-column
                     prop="create_datetime"
-                    label="create_datetime"
-                    width="300"
+                    label="Data de Cadastro"
+                    width="250"
                     :formatter="formatter">
             </el-table-column>
             <el-table-column
                     fixed="right"
-                    label="Operation"
-                    width="100">
+                    label="Operação"
+                    >
                 <template scope="scope">
-                    <el-button @click="editItem(scope.$index, tableData)" type="text" size="large">Edit</el-button>
+                    <el-button @click="editItem(scope.$index, tableData)" type="text" size="large">Editar</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -55,7 +50,13 @@
                        v-on:current-change="changePage">
         </el-pagination>
         <db-modal :dialogFormVisible="dialogFormVisible" :form="form" v-on:canclemodal="dialogVisible"></db-modal>
+                  <ul >
+                        <li v-for="user in users"  :key="user.id">
+                        {{user}}
+                        </li>
+                    </ul>  
     </div>
+     
 
 </template>
 
@@ -66,11 +67,13 @@
     export default {
         data(){
             return {
+                users: [],
                 tableData: [],
-                apiUrl: 'http://127.0.0.1:8000/api/persons',
+                apiUrl: 'http://localhost:8089/customers/paged',
                 total: 0,
-                pageSize: 10,
+                pageSize: 3,
                 currentPage: 1,
+                mobile_phone: '1',
                 sex: '',
                 email: '',
                 dialogFormVisible: false,
@@ -81,12 +84,23 @@
             DbModal
         },
         mounted () {
+            let currentObj = this;
+                  this.$axios.get('http://localhost:8089/customers')
+                .then(function (response) {
+                    currentObj.users = response.data
+                    console.log(response.data)
+                });
+                   this.$axios.get('http://localhost:8089/customers')
+                .then(function (response) {
+                    console.log(response.data)
+                });
             this.getCustomers();
             Bus.$on('filterResultData', (data) => {
                 this.tableData = data.results;
-                this.total = data.total_pages;
+                this.total = '5';
                 this.pageSize = data.count;
                 this.email = data.email;
+                this.mobile_phone = data.mobile_phone;
                 this.sex = data.sex;
 
             });
@@ -99,17 +113,17 @@
             },
 
             getCustomers: function () {
+                let currentObj = this;
                 this.$axios.get(this.apiUrl, {
                     params: {
                         page: this.currentPage,
-                        sex: this.sex,
-                        email: this.email
+                        size: this.pageSize
                     }
-                }).then((response) => {
-                    this.tableData = response.data.data.results;
-                    this.total = response.data.data.total;
-                    this.pageSize = response.data.data.count;
-                    console.log(response.data.data);
+                }).then(function (response) {
+                    currentObj.tableData = response.data;
+                    currentObj.total = response.data.total;
+                    currentObj.mobile_phone = response.data.mobile_phone;
+                    console.log(response.data.results+'  teste');
                 }).catch(function (response) {
                     console.log(response)
                 });
@@ -120,10 +134,12 @@
             },
             editItem: function (index, rows) {
                 this.dialogFormVisible = true;
-                const itemId = rows[index].id;
-                const idurl = 'http://127.0.0.1:8000/api/persons/detail/' + itemId;
+                const id = rows[index].id;
+                console.log(id+'outro')
+                const idurl = 'http://localhost:8089/customers/' + id;
                 this.$axios.get(idurl).then((response) => {
                     this.form = response.data;
+                    console.log(idurl+'finish')
                 }).catch(function (response) {
                     console.log(response)
                 });

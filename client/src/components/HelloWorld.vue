@@ -107,7 +107,7 @@
                 .catch(function (error) {
                     currentObj.token = error;
                 });
-            }
+            },
             inicial(e) {
                 
                 e.preventDefault();

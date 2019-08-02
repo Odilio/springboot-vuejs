@@ -18,7 +18,12 @@ public class Customer {
     private String mobile_phone;
 
     private String email;
+
+    private String sex;
     
     private String address;
+    
+    private String created_at;
+    
  
 }

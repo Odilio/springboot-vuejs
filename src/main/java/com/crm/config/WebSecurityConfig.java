@@ -48,7 +48,7 @@ return super.authenticationManagerBean();
 protected void configure(HttpSecurity httpSecurity) throws Exception {
 httpSecurity.csrf().disable()
 // Não cheque essas requisições
-.authorizeRequests().antMatchers("/questions/paged","/questions/sorted","/questions","/authenticate","/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**", "/swagger-ui.html", "/webjars/**").permitAll().
+.authorizeRequests().antMatchers("/customers/{id}","/customers","/customers/paged","/questions/paged","/questions/sorted","/questions","/authenticate","/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**", "/swagger-ui.html", "/webjars/**").permitAll().
 // Qualquer outra requisição deve ser checada
 anyRequest().authenticated().and().
 exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
